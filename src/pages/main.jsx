@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CreateTodo from "../component/CreateTodo";
+import TodoCard from "../component/TodoCard";
 
 const Main = () => {
   const [todos, setTodos] = useState([]);
@@ -20,7 +21,7 @@ const Main = () => {
     getTodos();
   }, []);
 
-  useEffect(() => console.log(todos), [todos]);
+  useEffect(() => console.log(todos.length), [todos]);
   useEffect(() => console.log(lastTodoId), [lastTodoId]);
 
   return (
@@ -36,27 +37,11 @@ const Main = () => {
           lastTodoId={lastTodoId}
         />
         <ul className="bg-purple-100 w-96 mx-auto h-[30rem] mt-12">
-          <li className="bg-green-100 h-12 flex items-center text-xl">
-            <span className="w-1/12 text-right bg-red-100">1</span>
-            <span className="w-8/12 pl-2 bg-blue-100">🧹 청소하기</span>
-            <button className="w-3/12 bg-yellow-100 hover:font-bold">
-              Detail
-            </button>
-          </li>
-          <li className="bg-green-100 h-12 flex items-center text-xl">
-            <span className="w-1/12 text-right bg-red-100">1</span>
-            <span className="w-8/12 pl-2 bg-blue-100">🧹 청소하기</span>
-            <button className="w-3/12 bg-yellow-100 hover:font-bold">
-              Detail
-            </button>
-          </li>
-          <li className="bg-green-100 h-12 flex items-center text-xl">
-            <span className="w-1/12 text-right bg-red-100">1</span>
-            <span className="w-8/12 pl-2 bg-blue-100">🧹 청소하기</span>
-            <button className="w-3/12 bg-yellow-100 hover:font-bold">
-              Detail
-            </button>
-          </li>
+          {todos.length === 0 ? (
+            <div>To do list가 없습니다.</div>
+          ) : (
+            todos.map((v, i) => <TodoCard key={i} todo={v} />)
+          )}
         </ul>
         <ul className="bg-red-100 w-96 mx-auto flex justify-center gap-2">
           <li className="hover:font-bold cursor-pointer">1</li>

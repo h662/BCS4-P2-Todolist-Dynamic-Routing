@@ -10,12 +10,13 @@ const CreateTodo = ({ todos, getTodos, lastTodoId }) => {
 
     const newTodos = [
       ...todos,
-      { id: lastTodoId + 1, todo: newTodo, isDone: false },
+      { id: lastTodoId + 1, title: newTodo, isDone: false },
     ];
 
     localStorage.setItem("todos", JSON.stringify(newTodos));
 
     getTodos();
+    setNewTodo("");
   };
 
   return (
