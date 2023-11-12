@@ -20,10 +20,7 @@ const CreateTodo = ({ todos, getTodos, lastTodoId }) => {
   };
 
   return (
-    <form
-      className="bg-purple-100 w-96 mx-auto mt-12 flex"
-      onSubmit={onSubmitNewTodo}
-    >
+    <form className="w-96 mx-auto mt-12 flex" onSubmit={onSubmitNewTodo}>
       <input
         className="w-3/4 mr-4 rounded-md p-2 focus:outline-none border-2 focus:border-blue-300"
         type="text"

@@ -21,35 +21,23 @@ const Main = () => {
     getTodos();
   }, []);
 
-  useEffect(() => console.log(todos.length), [todos]);
-  useEffect(() => console.log(lastTodoId), [lastTodoId]);
-
   return (
-    <div className="bg-red-100 min-h-screen">
-      <main className="max-w-screen-md min-h-screen bg-yellow-100 mx-auto">
-        <h1 className="bg-blue-100 py-12 text-center text-4xl font-bold">
-          To do list
-        </h1>
-        <CreateTodo
-          todos={todos}
-          setTodos={setTodos}
-          getTodos={getTodos}
-          lastTodoId={lastTodoId}
-        />
-        <ul className="bg-purple-100 w-96 mx-auto h-[30rem] mt-12">
-          {todos.length === 0 ? (
-            <div>To do list가 없습니다.</div>
-          ) : (
-            todos.map((v, i) => <TodoCard key={i} todo={v} />)
-          )}
-        </ul>
-        <ul className="bg-red-100 w-96 mx-auto flex justify-center gap-2">
-          <li className="hover:font-bold cursor-pointer">1</li>
-          <li className="hover:font-bold cursor-pointer">2</li>
-          <li className="hover:font-bold cursor-pointer">3</li>
-        </ul>
-      </main>
-    </div>
+    <main className="max-w-screen-md min-h-screen mx-auto">
+      <h1 className="py-12 text-center text-4xl font-bold">To do list</h1>
+      <CreateTodo
+        todos={todos}
+        setTodos={setTodos}
+        getTodos={getTodos}
+        lastTodoId={lastTodoId}
+      />
+      <ul className="w-96 mx-auto h-[30rem] mt-12 overflow-y-auto">
+        {todos.length === 0 ? (
+          <div>To do list가 없습니다.</div>
+        ) : (
+          todos.map((v, i) => <TodoCard key={i} todo={v} />)
+        )}
+      </ul>
+    </main>
   );
 };
 export default Main;
